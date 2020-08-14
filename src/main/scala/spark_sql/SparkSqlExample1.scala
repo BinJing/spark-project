@@ -1,11 +1,11 @@
 package spark_sql
 import org.apache.spark.sql._
-import common._
 import org.apache.spark.sql.types.StructType
 import org.apache.spark.sql.types.StructField
 import org.apache.spark.sql.types.StringType
 import org.apache.spark.sql.types.IntegerType
 import org.apache.log4j.{ Level, Logger }
+import demo.SparkCommonUtils
 
 object SparkSqlExample1 extends App {
   val spark = SparkCommonUtils.spSession

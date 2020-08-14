@@ -1,6 +1,5 @@
 package spark_sql
-
-import common.{ ConnectionUtil }
+import demo.SparkCommonUtils
 object RDDExamples extends App {
   val spark = SparkCommonUtils.spSession
   val sc = SparkCommonUtils.spContext
