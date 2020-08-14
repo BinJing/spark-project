@@ -1,6 +1,6 @@
 package spark_sql
 
-import common.ConnectionUtil
+import demo.SparkCommonUtils
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.types.StructType
 import org.apache.spark.sql.types.StructField
@@ -18,9 +18,9 @@ import org.apache.spark.sql.types.DoubleType
  * This RDD can be implicitly converted to a DataFrame and then be registered as a table. Tables can be used in subsequent SQL statements.
  */
 object InteropWithRDD extends App {
-  val spark = ConnectionUtil.spark
+  val spark = SparkCommonUtils.spSession
   import spark.implicits._
-  val sc = ConnectionUtil.sc
+  val sc = SparkCommonUtils.spContext
   spark.sparkContext.setLogLevel("ERROR")
   
   

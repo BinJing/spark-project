@@ -1,13 +1,13 @@
 package spark_sql
 
-import common.ConnectionUtil
+import demo.SparkCommonUtils
 import org.apache.spark.sql.SaveMode
 import org.apache.spark.util.SizeEstimator
 
 object LoadingData extends App {
-  val spark = ConnectionUtil.spark
+  val spark = SparkCommonUtils.spSession
   import spark.implicits._
-  val sc = ConnectionUtil.sc
+  val sc = SparkCommonUtils.spContext
   spark.sparkContext.setLogLevel("ERROR")
   
   val jsonRDD = sc.makeRDD(Array("{'name':'Yin','address':{'city':'Columbus','state':'Ohio'}}"))

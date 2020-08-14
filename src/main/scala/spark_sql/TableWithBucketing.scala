@@ -1,12 +1,12 @@
 package spark_sql
 
-import common.ConnectionUtil
+import demo.SparkCommonUtils
 import org.apache.spark.sql.SaveMode
 
 object TableWithBucketing extends App {
-  val spark = ConnectionUtil.spark
+  val spark = SparkCommonUtils.spSession
   import spark.implicits._
-  val sc = ConnectionUtil.sc
+  val sc = SparkCommonUtils.spContext
   spark.sparkContext.setLogLevel("ERROR")
   
   val people = spark.read.json("data-files/people.json")

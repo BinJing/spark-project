@@ -1,6 +1,6 @@
 package spark_sql
 
-import common.ConnectionUtil
+import demo.SparkCommonUtils
 import org.apache.spark.sql.SaveMode
 
 /**
@@ -13,9 +13,9 @@ import org.apache.spark.sql.SaveMode
  * setting the global SQL option spark.sql.parquet.mergeSchema to true.
  */
 object SchemaEvolution extends App {
-  val spark = ConnectionUtil.spark
+  val spark = SparkCommonUtils.spSession
   import spark.implicits._
-  val sc = ConnectionUtil.sc
+  val sc = SparkCommonUtils.spContext
   spark.sparkContext.setLogLevel("ERROR")
   
   val squaresDF = sc.makeRDD(1 to 5).map(i => (i, i * i)).toDF("value", "square")

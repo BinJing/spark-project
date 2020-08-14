@@ -6,15 +6,15 @@ import org.apache.spark.sql.types.StructType
 import org.apache.spark.sql.types.DataType
 import org.apache.spark.sql.types.StructField
 import org.apache.spark.sql.Row
-import common.ConnectionUtil
+import demo.SparkCommonUtils
 
 object AggregationUsingUserDefinedFunctions extends App {}
 
 object MyAverage extends UserDefinedAggregateFunction {
 
-  val spark = ConnectionUtil.spark
+  val spark = SparkCommonUtils.spSession
   import spark.implicits._
-  val sc = ConnectionUtil.sc
+  val sc = SparkCommonUtils.spContext
   spark.sparkContext.setLogLevel("ERROR")
 
   // Data types of input arguments of this aggregate function

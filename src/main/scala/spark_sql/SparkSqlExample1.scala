@@ -8,9 +8,9 @@ import org.apache.spark.sql.types.IntegerType
 import org.apache.log4j.{ Level, Logger }
 
 object SparkSqlExample1 extends App {
-  val spark = ConnectionUtil.spark
+  val spark = SparkCommonUtils.spSession
   import spark.implicits._
-  val sc = ConnectionUtil.sc
+  val sc = SparkCommonUtils.spContext
   spark.sparkContext.setLogLevel("ERROR")
 
   case class Person(name: String, age: Long)

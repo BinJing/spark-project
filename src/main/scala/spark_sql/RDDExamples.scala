@@ -2,8 +2,8 @@ package spark_sql
 
 import common.{ ConnectionUtil }
 object RDDExamples extends App {
-  val spark = ConnectionUtil.spark
-  val sc = ConnectionUtil.sc
+  val spark = SparkCommonUtils.spSession
+  val sc = SparkCommonUtils.spContext
   import spark.implicits._
 
   val file = sc.textFile("data-files/users.csv")
