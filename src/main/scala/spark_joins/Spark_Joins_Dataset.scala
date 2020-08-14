@@ -1,8 +1,8 @@
 package spark_joins
-import common.ConnectionUtil
+import demo.SparkCommonUtils
 object Spark_Joins_Dataset extends App {
-  val sc = ConnectionUtil.sc
-  val spark = ConnectionUtil.spark
+  val sc = SparkCommonUtils.spContext
+  val spark = SparkCommonUtils.spSession
   import spark.implicits._
 
   /*Payment Data.

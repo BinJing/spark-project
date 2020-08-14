@@ -9,7 +9,8 @@ object SparkCommonUtils {
   import org.apache.spark.SparkConf
 
   //Directory where the data files for the examples exist.
-  val datadir = "D:\\TRAININGS\\EDUREKA APACHE SPARK TRAINING LATEST\\spark-edureka-examples\\data-files\\"
+  // val datadir = "data-files\\"
+  val datadir = "data-files/"
 
   //A name for the spark instance. Can be any string
   val appName = "App-Prakash"
@@ -20,15 +21,16 @@ object SparkCommonUtils {
   //val sparkMasterURL = "yarn"
 
   //Temp dir required for Spark SQL
-  val tempDir = "file:///c:/temp/spark-warehouse"
+  // val tempDir = "file:///c:/temp/spark-warehouse"
+  val tempDir = "/home/edureka/temp"
 
   var spSession: SparkSession = null
   var spContext: SparkContext = null
 
   //Initialization. Runs when object is created
   {
-    //Need to set hadoop.home.dir to avoid errors during startup
-    System.setProperty("hadoop.home.dir", "C:\\winutils");
+    //Need to set hadoop.home.dir to avoid errors during startup. Required for Windows machine.
+    // System.setProperty("hadoop.home.dir", "C:\\winutils");
 
     //Create spark configuration object
     val conf = new SparkConf()

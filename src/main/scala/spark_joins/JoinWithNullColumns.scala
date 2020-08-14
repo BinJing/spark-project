@@ -1,9 +1,9 @@
 package spark_joins
-import common.ConnectionUtil
+import demo.SparkCommonUtils
 
 object JoinWithNullColumns extends App {
-  val sc = ConnectionUtil.sc
-  val spark = ConnectionUtil.spark
+  val sc = SparkCommonUtils.spContext
+  val spark = SparkCommonUtils.spSession
   import spark.implicits._
 
   val df1 = sc.parallelize(Seq(
