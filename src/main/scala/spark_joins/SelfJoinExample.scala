@@ -31,9 +31,11 @@ object SelfJoinExample extends App {
     (103, "Aron", Some(3)),
     (104, "Bobby", Some(3)),
     (105, "Jon", Some(3)))).toDF("employeeId", "employeeName", "managerId")
-
+    
   val self_join = employee1.as("t1").join(employee1.as("t2"), $"t1.managerId" === $"t2.employeeId")
     .select($"t1.employeeName".as("Employee Name"), $"t2.employeeName".as("Manager Name"))
+    
+    
   self_join.show()
   self_join.printSchema()
 }

@@ -9,8 +9,8 @@ object SparkCommonUtils {
   import org.apache.spark.SparkConf
 
   //Directory where the data files for the examples exist.
-  // val datadir = "data-files\\"
-  val datadir = "data-files/"
+  val datadir = "data-files\\"
+  //val datadir = "data-files/"
 
   //A name for the spark instance. Can be any string
   val appName = "App-Prakash"
@@ -21,8 +21,8 @@ object SparkCommonUtils {
   //val sparkMasterURL = "yarn"
 
   //Temp dir required for Spark SQL
-  // val tempDir = "file:///c:/temp/spark-warehouse"
-  val tempDir = "/home/edureka/temp"
+  val tempDir = "file:///c:/temp/spark-warehouse"
+  // val tempDir = "/home/edureka/temp"
 
   var spSession: SparkSession = null
   var spContext: SparkContext = null

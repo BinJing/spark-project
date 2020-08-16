@@ -29,7 +29,7 @@ object Spark_Joins extends App {
     Available syntax for JOIN:
 
       df1.join(df2, $"df1Key" === $"df2Key")
-      
+
       df1.join(df2, $"df1Key" === $"df2Key", "inner")
 
       df1.join(df2).where($"df1Key" === $"df2Key")
@@ -52,17 +52,19 @@ object Spark_Joins extends App {
     (102, "Aron"),
     (103, "Sam"))).toDF("customerId", "name")
   customer.createOrReplaceTempView("customer")
+  
+  
 
   // INNER JOIN
   //  val inner_join_df = customer.join(payment,Seq("customerId"),"inner")
   //  spark.sql("set spark.sql.crossJoin.enabled = true")
   //  val inner_join_df = customer.join(payment)
-  val inner_join_df = customer.join(payment, "customerId")
-  inner_join_df.show()
+  //  val inner_join_df = customer.join(payment, "customerId")
+  //  inner_join_df.show()
 
   // LEFT JOIN
-  val left_join_df = payment.join(customer, Seq("customerId"), "left")
-  left_join_df.show()
+  //  val left_join_df = payment.join(customer, Seq("customerId"), "left")
+  //  left_join_df.show()
 
   // RIGHT JOIN
   val right_join = payment.join(customer, Seq("customerId"), "right")
@@ -94,6 +96,6 @@ object Spark_Joins extends App {
   // LEFT ANTI JOIN
   val left_anti = payment.join(customer, Seq("customerId"), "left_anti")
   left_anti.show()
-  left_anti.printSchema()
+  //  left_anti.printSchema()
 
 }

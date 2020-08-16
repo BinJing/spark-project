@@ -15,6 +15,10 @@ object JoinWithNullColumns extends App {
     (Some(101), "Jon"),
     (Some(102), "Aron"),
     (None, "Sam"))).toDF("customerId", "name")
+    
+    
+    df1.show()
+    df2.show()
 
   // This will give atleast one duplicate column based on the join condition.
   // Also JOIN has ignored the null columns.
