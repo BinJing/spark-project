@@ -30,7 +30,7 @@ object SparkCommonUtils {
   //Initialization. Runs when object is created
   {
     //Need to set hadoop.home.dir to avoid errors during startup. Required for Windows machine.
-    // System.setProperty("hadoop.home.dir", "C:\\winutils");
+    System.setProperty("hadoop.home.dir", "C:\\Hadoop");
 
     //Create spark configuration object
     val conf = new SparkConf()

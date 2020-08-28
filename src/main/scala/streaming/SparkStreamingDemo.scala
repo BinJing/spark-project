@@ -35,6 +35,7 @@ object SparkStreamingDemo extends App {
 
   wordCounts.print()
 
+  
   //Count lines
   def computeMetrics(rdd: RDD[String]): Long = {
     val linesCount = rdd.count()
@@ -43,9 +44,10 @@ object SparkStreamingDemo extends App {
     pw.flush()
     return linesCount
   }
-  
+
   val lineCount = lines.foreachRDD(computeMetrics(_))
 
+ 
   //Compute window metrics
   def windowMetrics(rdd: RDD[String]) = {
     print("Window RDD size:" + rdd.count() + "\n")
@@ -56,10 +58,10 @@ object SparkStreamingDemo extends App {
   val windowedRDD = lines.window(Seconds(15), Seconds(5))
 
   windowedRDD.foreachRDD(windowMetrics(_))
-
-    ssc.start()
-    ssc.awaitTermination()
-//  pw.close()
+ 
+  ssc.start()
+  ssc.awaitTermination()
+  //  pw.close()
   //ssc.stop()
 
 }

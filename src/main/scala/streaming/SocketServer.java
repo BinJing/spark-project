@@ -12,44 +12,43 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class SocketServer {
-	
+
 	public static void main(String[] args) {
-		
+
 		ServerSocket socServer = null;
-	    String line;
-	    DataInputStream is;
-	    PrintStream os;
-	    Socket clientSocket = null;
-	    
-    	Path path = FileSystems.getDefault().getPath("D:\\TRAININGS\\EDUREKA APACHE SPARK TRAINING LATEST\\spark-edureka-examples\\data-files", "streamingtweets.txt");
-	    List<String> lines = null;
+		String line;
+		DataInputStream is;
+		PrintStream os;
+		Socket clientSocket = null;
+
+		Path path = FileSystems.getDefault().getPath("data-files\\", "streamingtweets.txt");
+		List<String> lines = null;
 		try {
 			// Read all the line from the file.
-			lines = Files.readAllLines(path,StandardCharsets.UTF_8);
+			lines = Files.readAllLines(path, StandardCharsets.UTF_8);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-	    
-	    try {
-	    	// Server socket, bound to the specified port.
-	    	socServer = new ServerSocket(9999);
-	    	System.out.println("Socket opened");
-	    	
-	    	System.out.println("Total records read :" + lines.size());
-	     }
-	     catch (IOException e) {
-	        System.out.println(e);
-	     }   
-	    
-	    try {
-	    	   // Listens for a connection to be made to this socket and accepts it.
-	    	   // The method blocks until a connection is made. 
-	           clientSocket = socServer.accept();
-	           
-	           System.out.println("Accepted client request from : " + clientSocket.getInetAddress());
-	           is = new DataInputStream(clientSocket.getInputStream());
-	           os = new PrintStream(clientSocket.getOutputStream());
+
+		try {
+			// Server socket, bound to the specified port.
+			socServer = new ServerSocket(9999);
+			System.out.println("Socket opened");
+
+			System.out.println("Total records read :" + lines.size());
+		} catch (IOException e) {
+			System.out.println(e);
+		}
+
+		try {
+			// Listens for a connection to be made to this socket and accepts it.
+			// The method blocks until a connection is made.
+			clientSocket = socServer.accept();
+
+			System.out.println("Accepted client request from : " + clientSocket.getInetAddress());
+			is = new DataInputStream(clientSocket.getInputStream());
+			os = new PrintStream(clientSocket.getOutputStream());
 
 			while (true) {
 
@@ -62,9 +61,8 @@ public class SocketServer {
 				// Randomly sleep 1 - 3 seconds
 				Thread.sleep((long) (Math.random() * 3000));
 			}
-	        }   
-	    catch (Exception e) {
-	           System.out.println(e);
-	        }
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 }
